@@ -7,14 +7,12 @@
     <meta name="description" content="노션보다 빠르고, 메모장보다 특화된 메모 앱">
     
     <style>
-        /* 기본 설정 */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        /* 색상 변수 */
         :root {
             --primary: #6366f1;
             --primary-dark: #4f46e5;
@@ -186,6 +184,142 @@
             transform: translateY(-3px);
         }
 
+        /* 기능 시연 섹션 */
+        .demo {
+            padding: 6rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        .demo-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .demo-phone {
+            background: linear-gradient(135deg, var(--dark-light), var(--dark));
+            border-radius: 40px;
+            padding: 1.5rem;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+            border: 8px solid #2a2a3e;
+            position: relative;
+            max-width: 350px;
+            margin: 0 auto;
+        }
+
+        .demo-screen {
+            background: #1a1a2e;
+            border-radius: 30px;
+            overflow: hidden;
+            aspect-ratio: 9/19.5;
+            position: relative;
+        }
+
+        .demo-header {
+            background: rgba(99, 102, 241, 0.1);
+            padding: 1.5rem 1rem 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .demo-time {
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .demo-icons {
+            display: flex;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+        }
+
+        .demo-content {
+            padding: 1.5rem;
+            height: calc(100% - 80px);
+            overflow: hidden;
+        }
+
+        .demo-memo {
+            background: rgba(99, 102, 241, 0.1);
+            border-left: 3px solid var(--primary);
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            animation: slideIn 0.5s ease-out;
+            font-size: 0.85rem;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .demo-memo-title {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+            color: var(--primary);
+            font-size: 0.75rem;
+        }
+
+        .demo-input {
+            position: absolute;
+            bottom: 1rem;
+            left: 1rem;
+            right: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 0.8rem;
+            color: var(--text);
+            font-size: 0.85rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
+            50% { box-shadow: 0 0 0 8px rgba(99, 102, 241, 0); }
+        }
+
+        .demo-features {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .demo-feature-item {
+            display: flex;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        .demo-feature-icon {
+            font-size: 2.5rem;
+            min-width: 60px;
+            text-align: center;
+        }
+
+        .demo-feature-text h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .demo-feature-text p {
+            color: var(--text-dim);
+            line-height: 1.6;
+        }
+
         /* 특징 섹션 */
         .features {
             padding: 6rem 2rem;
@@ -263,7 +397,6 @@
             opacity: 0.9;
         }
 
-        /* Tally 폼 스타일 */
         .tally-form-container {
             background: rgba(255, 255, 255, 0.1);
             border-radius: 16px;
@@ -339,6 +472,17 @@
         }
 
         /* 반응형 */
+        @media (max-width: 968px) {
+            .demo-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .demo-phone {
+                max-width: 300px;
+            }
+        }
+
         @media (max-width: 768px) {
             nav {
                 padding: 1rem;
@@ -361,7 +505,6 @@
             }
         }
 
-        /* 스크롤 애니메이션 */
         .feature-card, .faq-item {
             opacity: 0;
             transform: translateY(30px);
@@ -388,37 +531,77 @@
             </p>
             <div class="cta-group">
                 <a href="#signup" class="btn btn-primary">📱 사전 신청하기</a>
-                <a href="#features" class="btn btn-secondary">✨ 더 알아보기</a>
+                <a href="#demo" class="btn btn-secondary">✨ 시연 보기</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 기능 시연 섹션 -->
+    <section class="demo" id="demo">
+        <h2 class="section-title">실제로 어떻게 작동하나요?</h2>
+        <div class="demo-container">
+            <div class="demo-phone">
+                <div class="demo-screen">
+                    <div class="demo-header">
+                        <div class="demo-time">9:41</div>
+                        <div class="demo-icons">📶 📡 🔋</div>
+                    </div>
+                    <div class="demo-content">
+                        <div class="demo-memo">
+                            <div class="demo-memo-title">🎯 회의록</div>
+                            <div>팀 회의 - 새 기능 논의</div>
+                        </div>
+                        <div class="demo-memo" style="animation-delay: 0.3s">
+                            <div class="demo-memo-title">📚 공부</div>
+                            <div>React Hooks 정리</div>
+                        </div>
+                        <div class="demo-memo" style="animation-delay: 0.6s">
+                            <div class="demo-memo-title">💡 아이디어</div>
+                            <div>주말 프로젝트 계획</div>
+                        </div>
+                        <div class="demo-input">
+                            터치 한 번으로 즉시 입력 시작...
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-features">
+                <div class="demo-feature-item">
+                    <div class="demo-feature-icon">⚡</div>
+                    <div class="demo-feature-text">
+                        <h3>위젯으로 1초 실행</h3>
+                        <p>홈 화면에서 위젯만 터치하면 바로 메모 작성. 앱 실행, 로딩, 페이지 생성 과정 없이 즉시 시작합니다.</p>
+                    </div>
+                </div>
+
+                <div class="demo-feature-item">
+                    <div class="demo-feature-icon">🎯</div>
+                    <div class="demo-feature-text">
+                        <h3>자동 분류</h3>
+                        <p>시간, 장소, 키워드를 분석해서 회의록, 공부, 일기 등으로 자동 분류. 나중에 찾기도 쉽습니다.</p>
+                    </div>
+                </div>
+
+                <div class="demo-feature-item">
+                    <div class="demo-feature-icon">📱</div>
+                    <div class="demo-feature-text">
+                        <h3>한 손으로 완벽 조작</h3>
+                        <p>하단 입력창과 스와이프 제스처로 지하철에서도 한 손으로 빠르게 메모할 수 있습니다.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- 특징 섹션 -->
     <section class="features" id="features">
-        <h2 class="section-title">왜 QuickLog인가요?</h2>
+        <h2 class="section-title">더 많은 특징</h2>
         <div class="features-grid">
             <div class="feature-card">
-                <span class="feature-icon">⚡</span>
-                <h3>1초 실행</h3>
-                <p>위젯 터치만으로 즉시 입력 시작. 앱을 열고, 로딩을 기다리고, 새 페이지를 만드는 시간은 이제 그만.</p>
-            </div>
-
-            <div class="feature-card">
-                <span class="feature-icon">🎯</span>
-                <h3>상황 특화</h3>
-                <p>회의, 공부, 일기 등 상황을 자동으로 인식하고 분류. 찾고 싶은 메모를 1초 안에 검색할 수 있습니다.</p>
-            </div>
-
-            <div class="feature-card">
                 <span class="feature-icon">🔒</span>
-                <h3>내 폰에 저장</h3>
-                <p>로그인 없이도 사용 가능. 모든 데이터는 로컬에 안전하게 보관되며, 원할 때만 클라우드 동기화.</p>
-            </div>
-
-            <div class="feature-card">
-                <span class="feature-icon">📱</span>
-                <h3>한 손 최적화</h3>
-                <p>하단 입력창과 스와이프 제스처로 한 손으로도 완벽하게 조작. 지하철에서도 빠르게 메모하세요.</p>
+                <h3>로컬 저장 우선</h3>
+                <p>로그인 없이도 사용 가능. 모든 데이터는 내 폰에 안전하게 보관되며, 원할 때만 클라우드 동기화.</p>
             </div>
 
             <div class="feature-card">
@@ -429,13 +612,31 @@
 
             <div class="feature-card">
                 <span class="feature-icon">🚀</span>
-                <h3>오프라인 우선</h3>
+                <h3>오프라인 완벽 지원</h3>
                 <p>인터넷이 없어도 완벽하게 작동. 비행기 모드에서도 메모를 작성하고 나중에 자동 동기화.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🔍</span>
+                <h3>강력한 검색</h3>
+                <p>날짜, 카테고리, 키워드로 1초 안에 원하는 메모 검색. 태그와 필터로 더 정확하게.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">🎤</span>
+                <h3>음성 메모 (프리미엄)</h3>
+                <p>음성 녹음과 AI 자동 텍스트 변환. 회의나 강의 내용을 빠르게 기록하세요.</p>
+            </div>
+
+            <div class="feature-card">
+                <span class="feature-icon">☁️</span>
+                <h3>멀티 디바이스</h3>
+                <p>스마트폰, 태블릿, PC 어디서나 실시간 동기화. 한 곳에서 쓴 메모를 모든 기기에서.</p>
             </div>
         </div>
     </section>
 
-    <!-- 사전 신청 섹션 (Tally 폼) -->
+    <!-- 사전 신청 섹션 -->
     <section class="signup" id="signup">
         <div class="signup-content">
             <h2>얼리버드 혜택 받기</h2>
@@ -485,7 +686,6 @@
     </footer>
 
     <script>
-        // 부드러운 스크롤
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -499,7 +699,6 @@
             });
         });
 
-        // 스크롤 애니메이션
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -100px 0px'
@@ -517,6 +716,19 @@
         document.querySelectorAll('.feature-card, .faq-item').forEach(el => {
             observer.observe(el);
         });
+
+        // 메모 추가 애니메이션
+        let memoIndex = 0;
+        const memos = document.querySelectorAll('.demo-memo');
+        
+        setInterval(() => {
+            memos.forEach(memo => {
+                memo.style.animation = 'none';
+                setTimeout(() => {
+                    memo.style.animation = '';
+                }, 10);
+            });
+        }, 5000);
     </script>
 </body>
 </html>
